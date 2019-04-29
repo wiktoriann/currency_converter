@@ -7,7 +7,7 @@
 			<link rel="stylesheet" type="text/css" href="style.css"/>
 		</head>
 		<body>
-		<div id="header">
+			<div id="header">
 				<i>Cashier</i>
 			</div>
 			<div id="form">
@@ -15,47 +15,45 @@
 				<i>RESULT</i>
 			</div>
 			<?php
-			$amount=$_POST['amount'];
-            $amount=str_replace(',','.',$amount); 
-			echo 'Your amount: '.$amount.'</br></br>';
-			settype($amount, 'float');
+				$amount=$_POST['amount'];
+           			$amount=str_replace(',','.',$amount); 
+				echo 'Your amount: '.$amount.'</br></br>';
+				settype($amount, 'float');
 			
-			if(empty($amount))
-			{
-				echo 'You have to insert amount!';
-			}
-			else
+				if(empty($amount))
+					{
+						echo 'You have to insert amount!';
+					}
+				else
 				
 		
 			
-			$nbp = file_get_contents('http://api.nbp.pl/api/exchangerates/rates/a/usd?format=json');
-			$dane = json_decode($nbp,TRUE);
-			$kurs = $dane['rates'][0]['mid']; 
-			echo 'Currency rate: '.round($kurs,2).'</br></br>'; 
-			settype($amount, 'float');
+				$nbp = file_get_contents('http://api.nbp.pl/api/exchangerates/rates/a/usd?format=json');
+				$dane = json_decode($nbp,TRUE);
+				$kurs = $dane['rates'][0]['mid']; 
+				echo 'Currency rate: '.round($kurs,2).'</br></br>'; 
+				settype($amount, 'float');
 			
-			switch($_POST['value']) 
-			{
-				case 'dodolara':
+				switch($_POST['value']) 
+					{
+					case 'dodolara':
 				
-				$usd= $amount / $kurs;
-				settype($usd,'float');
+						$usd= $amount / $kurs;
+						settype($usd,'float');
+						echo 'Converted: '.round($usd,2).' USD</br></br>';
 				
-				echo 'Converted: '.round($usd,2).' USD</br></br>';
+						break;
 				
-				break;
+					case 'dozlotego':
 				
-				case 'dozlotego':
+						$pln= $amount * $kurs;
+						settype($pln,'float');
+						echo 'Converted: '.round($pln,2).' PLN</br></br>';
 				
-				$pln= $amount * $kurs;
-				settype($pln,'float');
-				
-                echo 'Converted: '.round($pln,2).' PLN</br></br>';
-				
-				break;
-			}
+						break;
+					}
 			?>
-                <a href="index.html"><button name="back">Back</button></a>
+                	<a href="index.html"><button name="back">Back</button></a>
                 
 			</div>
 		</body>
