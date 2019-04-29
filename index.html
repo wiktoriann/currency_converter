@@ -1,0 +1,36 @@
+<!doctype html>
+	<html>
+		<head>
+			<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Allerta+Stencil|Audiowide|Cinzel|Didact+Gothic|Iceberg|Julius+Sans+One|Playfair+Display+SC|Righteous" rel="stylesheet"> 
+			<meta charset="utf-8"/>
+			<title>Cashier</title>
+			<link rel="stylesheet" type="text/css" href="style.css"/>
+		</head>
+		<body>
+			<div id="header">
+				<i>Cashier</i>
+			</div>
+			<div id="form">
+				<form action="converter.php" method="POST">
+					<div id="posthead">
+						<i>USE CURRENCY CONVERTER</i>
+					</div>
+					<b>Convert:</b>
+					<select name="value">
+						<option value="dodolara">
+							PLN to USD
+						</option>
+						<option value="dozlotego">
+							USD to PLN
+						</option>
+					</select></br></br>
+					<b>Amount:</b> 
+					<input type="float" name="amount"></input></br></br>
+					<button type="submit" name="submit">Convert</button><br>
+					<button type="reset" name="reset">Clear</button>
+				</form>
+			</div>
+			<div id="fotter">
+			</div>
+		</body>
+	</html>
